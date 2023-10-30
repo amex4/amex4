@@ -2,15 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Donate from './components/Donate'
 import reportWebVitals from './reportWebVitals';
-import {TransactionProvider} from './context/TransactionContext'
+import {TransactionProvider} from './context/TransactionContext';
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path : "/Donate",
+    element : <Donate />,
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <TransactionProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   </TransactionProvider>
 );
 

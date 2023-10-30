@@ -23,6 +23,8 @@ const Transactions = ()=>{
                         <p className='text-white text-base'>From : {!addressFrom ? 'Address From' : shortenAddress(addressFrom)}</p>
                         <p className='text-white text-base'>To : {!addressTo ? 'Address To' : shortenAddress(addressTo)}</p>
                         <p className='text-white text-base'>Amount : {amount} ETH</p>
+                        <p className='text-white text-base'>Keyword : {keyword}</p>
+                        <p className='text-white text-base'>Message : {message}</p>
                         <div className='bg-black  p-3 px-5 w-max rounded-3xl mt-5 shadow-2xl'>
                             <p className='text-[#37c7da] font-bold'>{timestamp}</p>
                         </div>

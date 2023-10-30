@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {HiMenuAlt4} from 'react-icons/hi'
 import {AiOutlineClose} from 'react-icons/ai'
 import img from '../resources/img1.jpg'
@@ -7,7 +8,7 @@ import { useState } from 'react';
 const NavbarItem = ({title, classProps})=>{
     return(
         <li className={`mx-4 cursor-pointer ${classProps}`}>
-            <a href='https://www.google.com/search?q=ethereum+exchange&rlz=1C1PNFE_enIN1015IN1015&oq=e&gs_lcrp=EgZjaHJvbWUqCwgAEEUYJxg7GIoFMgsIABBFGCcYOxiKBTIGCAEQRRhAMgYIAhBFGDkyCAgDEEUYJxg7MgkIBBAAGEMYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgxMjUyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8'>{title}</a>
+            <Link to={title}>{title}</Link>
         </li>
     );
 }
@@ -24,9 +25,15 @@ const Navbar = ()=>{
                 <img src={img} alt="logo" className='w-32 cursor-pointer' />
             </div>
             <ul className='text-white md:flex hidden list-none flex-row justify-between items-center flex-initial'>
-                {["Market","Wallet","Exchange","Donate"].map((item,index)=>(
-                    <NavbarItem key={item + index} title={item}  />
-                ))}
+                <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <Link to='Donate'>Donate</Link>
+                </li>
+                <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <a href='https://ethereum.org/en/'>Exchange</a>
+                </li>
+                <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <a href='https://metamask.io/'>Wallet</a>
+                </li>
             </ul>
             <div className='flex relative'>
                 {toggleMenu 
@@ -40,9 +47,15 @@ const Navbar = ()=>{
                         <li className='text-xl w-full my-2'>
                             <AiOutlineClose onClick={() => SetToggleMenu(false)} />
                         </li>
-                        {["Market","Wallet","Exchange","Donate"].map((item,index)=>(
-                        <NavbarItem key={item + index} title={item} classProps="my-2 text-lg" />
-                        ))}
+                        <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <Link to='Donate'>Donate</Link>
+                </li>
+                <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <a href='https://ethereum.org/en/'>Exchange</a>
+                </li>
+                <li className={`mx-4 cursor-pointer my-2 text-lg`}>
+                    <a href='https://metamask.io/'>Wallet</a>
+                </li>
                     </ul>
                 )}
             </div>

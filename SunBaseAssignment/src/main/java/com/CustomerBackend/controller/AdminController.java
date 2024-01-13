@@ -32,6 +32,8 @@ public class AdminController {
 	     this.jwtUtil = jwtUtil;		
 	}
 	
+	// call the login method to use authentication which works with customUserService
+	
 	@PostMapping("/auth/login")
 	public ResponseEntity<Object> login(@RequestBody AdminUser user) {
 		try {

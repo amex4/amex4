@@ -14,6 +14,8 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
+	// save the customer detail fetched from api to the database
+	
 	public boolean create(CustomerDetail customerDetail) {
 		try {
 			customerRepository.save(customerDetail);
@@ -23,9 +25,13 @@ public class CustomerService {
 		}
 	}
 	
+	// find the customer from database by id
+	
 	public CustomerDetail getCustomer(int id) {
 		return customerRepository.findByCustomerId(id);
 	}
+	
+	// get all customers from database
 	
 	public List<CustomerDetail> getAllCustomers(String query) {
 		if (query.equals("")) {
@@ -33,6 +39,8 @@ public class CustomerService {
 		}
 		return customerRepository.findByFirstNameContainingIgnoreCaseOrCityContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query, query);
 	}
+	
+	// update the customer in database
 	
 	public boolean update(CustomerDetail customerDetail) {
 		try {
@@ -42,6 +50,8 @@ public class CustomerService {
 			return false;
 		}
 	}
+	
+	//delete the customer from database
 	
 	public boolean delete(int id) {
 		try {

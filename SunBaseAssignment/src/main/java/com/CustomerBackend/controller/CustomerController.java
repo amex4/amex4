@@ -32,8 +32,14 @@ public class CustomerController {
 	@Autowired
 	private JwtUtil jwtutil;
 	
+	
+	//create a post method to create an entry for customer
+	
 	@PostMapping("/customer/create")
 	public ResponseEntity<Object> createCustomer(@RequestBody CustomerDetail customer,HttpServletRequest request) {
+		
+		//set email by taking it from jwt token
+		
 		Claims claims = jwtutil.resolveClaims(request);
 		String email = jwtutil.getEmail(claims);
 		customer.setEmail(email);
@@ -49,6 +55,8 @@ public class CustomerController {
 		}
 	}
 	
+	// get list of all customers 
+	
 	@GetMapping("/customer/all")
 	public ResponseEntity<Object> getAllCustomers(@RequestParam(defaultValue = "") String query) {
 		try {
@@ -60,6 +68,8 @@ public class CustomerController {
 		}
 	}
 	
+	// get single customer
+	
 	@GetMapping("/customer/{id}")
 	public ResponseEntity<Object> getCustomer(@PathVariable int id){
 		try {
@@ -69,6 +79,8 @@ public class CustomerController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
+	
+	//update single customer
 	
 	@PutMapping("/customer/{id}")
 	public ResponseEntity<Object> updateCustomer(@PathVariable int id,@RequestBody CustomerDetail customer,HttpServletRequest request){
@@ -87,6 +99,8 @@ public class CustomerController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
+	
+	//delete a single customer
 	
 	@DeleteMapping("/customer/{id}")
 	public ResponseEntity<Object> delteCustomer(@PathVariable int id){
